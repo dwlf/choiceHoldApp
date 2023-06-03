@@ -7,5 +7,13 @@
         <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="publicationYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CHReview" inverseName="book" inverseEntity="CHReview"/>
+    </entity>
+    <entity name="CHReview" representedClassName="CHReview" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="topic" optional="YES" attributeType="String"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CHBook2" inverseName="reviews" inverseEntity="CHBook2"/>
     </entity>
 </model>
