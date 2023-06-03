@@ -1,35 +1,42 @@
 import SwiftUI
+import CoreData
 
 struct AddBookView: View {
-    @State private var title = ""
-    @State private var rating = 3
-    @Binding var books: [Book]
+    var book: CHBook?
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State private var title: String
+    @State private var rating: Int
+
+    init(book: CHBook? = nil) {
+        _title = State(initialValue: book?.title ?? "")
+        _rating = State(initialValue: Int(book?.rating ?? 1))
+        self.book = book
+    }
 
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    TextField("Title", text: $title)
-                    Picker("Rating", selection: $rating) {
-                        ForEach(1..<6) {
-                            Text("\($0) Stars")
-                        }
-                    }
+                TextField("Title", text: $title)
+                Stepper(value: $rating, in: 1...5) {
+                    Text("Rating: \(rating)")
                 }
-                Button("Add Book") {
-                    let newBook = Book(title: title, rating: rating)
-                    books.append(newBook)
-                    title = ""
-                    rating = 3
+                Button(action: addBook) {
+                    Text(book == nil ? "Add Book" : "Update Book")
                 }
             }
-            .navigationTitle("Add Book")
+            .navigationBarTitle(book == nil ? "Add Book" : "Update Book")
         }
     }
-}
 
-struct AddBookView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddBookView(books: .constant([]))
+    func addBook() {
+        let bookToUpdateOrCreate = book ?? CHBook(context: managedObjectContext)
+        bookToUpdateOrCreate.title = title
+        bookToUpdateOrCreate.rating = Int16(rating)
+
+        do {
+            try managedObjectContext.save()
+        } catch {
+            // handle the Core Data error
+        }
     }
 }

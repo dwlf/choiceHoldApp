@@ -1,38 +1,40 @@
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    @State private var showingAddBookView = false
-    @State private var books = [
-        Book(title: "Book 1", rating: 3),
-        Book(title: "Book 2", rating: 4),
-        Book(title: "Book 3", rating: 5)
-    ]
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(
+        entity: CHBook.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \CHBook.title, ascending: true)]
+    ) var books: FetchedResults<CHBook>
 
     var body: some View {
         NavigationView {
-            List(books) { book in
-                VStack(alignment: .leading) {
-                    Text(book.title)
-                    Text("Rating: \(book.rating)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+            List {
+                ForEach(books, id: \.self) { book in
+                    NavigationLink(destination: AddBookView(book: book)) {
+                        Text(book.title ?? "Unknown title")
+                    }
                 }
+                .onDelete(perform: deleteBook)
             }
             .navigationBarTitle("Books")
-            .navigationBarItems(trailing: Button(action: {
-                showingAddBookView = true
-            }) {
+            .navigationBarItems(trailing: NavigationLink(destination: AddBookView()) {
                 Image(systemName: "plus")
             })
-            .sheet(isPresented: $showingAddBookView) {
-                AddBookView(books: $books)
-            }
         }
     }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    func deleteBook(at offsets: IndexSet) {
+        for index in offsets {
+            let book = books[index]
+            managedObjectContext.delete(book)
+        }
+
+        do {
+            try managedObjectContext.save()
+        } catch {
+            // handle the Core Data error
+        }
     }
 }
