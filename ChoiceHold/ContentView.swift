@@ -51,52 +51,58 @@ struct ContentView: View {
     }
     
     func populateData() {
-        // Create books
-        let bookTitles = ["Title 1", "Title 2", "Title 3", "Title 4"]
-        var books = [CHBook2]()
+        let fetchRequest: NSFetchRequest<CHReview> = CHReview.fetchRequest()
+        let reviewCount = try? moc.count(for: fetchRequest)
+        
+        // Only create dummy books & reviews if there are no reviews on this system.
+        if reviewCount == 0 {
+            // Create dummy books
+            let bookTitles = ["Title 1", "Title 2", "Title 3", "Title 4"]
+            var books = [CHBook2]()
 
-        for (index, title) in bookTitles.enumerated() {
-            let fetchRequest: NSFetchRequest<CHBook2> = CHBook2.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "title == %@", title)
-
-            if let _ = try? moc.fetch(fetchRequest).first {
-                // Book already exists, do nothing
-            } else {
-                // Book does not exist, create it
-                let book = CHBook2(context: moc)
-                book.id = UUID()
-                book.author = "Author \(index + 1)"
-                book.isbn = "ISBN \(index + 1)"
-                book.language = "Language \(index + 1)"
-                book.publicationYear = Int16(2001 + index)
-                book.title = title
-                books.append(book)
-            }
-        }
-
-        saveContext()
-
-        // Create reviews
-        for book in books {
-            for i in 1...3 {
-                let fetchRequest: NSFetchRequest<CHReview> = CHReview.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "book.title == %@ AND genre == %@", book.title!, "Topic \(book.title!) \(i)")
+            for (index, title) in bookTitles.enumerated() {
+                let fetchRequest: NSFetchRequest<CHBook2> = CHBook2.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "title == %@", title)
 
                 if let _ = try? moc.fetch(fetchRequest).first {
-                    // Review already exists, do nothing
+                    // Book already exists, do nothing
                 } else {
-                    // Review does not exist, create it
-                    let review = CHReview(context: moc)
-                    review.id = UUID()
-                    review.topic = "Topic \(book.title!) \(i)"
-                    review.notes = "Notes \(book.title!) \(i)"
-                    review.rating = Int16(i)
-                    review.book = book
+                    // Book does not exist, create it
+                    let book = CHBook2(context: moc)
+                    book.id = UUID()
+                    book.author = "Author \(index + 1)"
+                    book.isbn = "ISBN \(index + 1)"
+                    book.language = "Language \(index + 1)"
+                    book.publicationYear = Int16(2001 + index)
+                    book.title = title
+                    books.append(book)
                 }
             }
-        }
 
-        saveContext()
+            saveContext()
+
+            // Create dummy reviews
+            for book in books {
+                for i in 1...3 {
+                    let fetchRequest: NSFetchRequest<CHReview> = CHReview.fetchRequest()
+                    fetchRequest.predicate = NSPredicate(format: "book.title == %@ AND topic == %@", book.title!, "Topic \(book.title!) \(i)")
+
+                    if let _ = try? moc.fetch(fetchRequest).first {
+                        // Review already exists, do nothing
+                    } else {
+                        // Review does not exist, create it
+                        let review = CHReview(context: moc)
+                        review.id = UUID()
+                        review.topic = "Topic \(book.title!) \(i)"
+                        review.notes = "Notes \(book.title!) \(i)"
+                        review.rating = Int16(i)
+                        review.book = book
+                    }
+                }
+            }
+
+            saveContext()
+        }
     }
 
     func saveContext() {
