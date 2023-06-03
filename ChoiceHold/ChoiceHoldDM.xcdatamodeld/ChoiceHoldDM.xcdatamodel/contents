@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1.0" systemVersion="1.0" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="CHBook2" representedClassName="CHBook2" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -7,5 +6,17 @@
         <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="publicationYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CHBookReview" inverseName="book" inverseEntity="CHBookReview"/>
+    </entity>
+    <entity name="CHBookReview" representedClassName="CHBookReview" syncable="YES" codeGenerationType="class">
+        <attribute name="ratingValue" optional="YES" attributeType="Decimal"/>
+        <attribute name="review" optional="YES" attributeType="String"/>
+        <relationship name="reviewer" optional="YES" destinationEntity="CHReviewer" inverseName="reviewHistory" inverseEntity="CHReviewer"/>
+        <relationship name="book" optional="YES" destinationEntity="CHBook2" inverseName="reviews" inverseEntity="CHBook2"/>
+    </entity>
+    <entity name="CHReviewer" representedClassName="CHReviewer" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="reviewHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CHBookReview" inverseName="reviewer" inverseEntity="CHBookReview"/>
     </entity>
 </model>
