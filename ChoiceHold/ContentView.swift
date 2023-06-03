@@ -2,39 +2,27 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: CHBook.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \CHBook.title, ascending: true)]
-    ) var books: FetchedResults<CHBook>
-
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
+    
+    @State private var showingAddScreen = false
+    
     var body: some View {
         NavigationView {
-            List {
-                ForEach(books, id: \.self) { book in
-                    NavigationLink(destination: AddBookView(book: book)) {
-                        Text(book.title ?? "Unknown title")
+            Text("Count: \(books.count)")
+                .navigationTitle("ChoiceHold")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAddScreen.toggle()
+                        } label: {
+                            Label("Add Book", systemImage: "plus")
+                        }
                     }
                 }
-                .onDelete(perform: deleteBook)
-            }
-            .navigationBarTitle("Books")
-            .navigationBarItems(trailing: NavigationLink(destination: AddBookView()) {
-                Image(systemName: "plus")
-            })
-        }
-    }
-
-    func deleteBook(at offsets: IndexSet) {
-        for index in offsets {
-            let book = books[index]
-            managedObjectContext.delete(book)
-        }
-
-        do {
-            try managedObjectContext.save()
-        } catch {
-            // handle the Core Data error
+                .sheet(isPresented: $showingAddScreen) {
+                    AddBookView()
+                }
         }
     }
 }

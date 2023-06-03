@@ -2,41 +2,34 @@ import SwiftUI
 import CoreData
 
 struct AddBookView: View {
-    var book: CHBook?
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @State private var title: String
-    @State private var rating: Int
-
-    init(book: CHBook? = nil) {
-        _title = State(initialValue: book?.title ?? "")
-        _rating = State(initialValue: Int(book?.rating ?? 1))
-        self.book = book
-    }
-
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var title = ""
+    @State private var author = ""
+    @State private var isbn = ""
+    @State private var publicationYear = 1999
+    
     var body: some View {
         NavigationView {
             Form {
-                TextField("Title", text: $title)
-                Stepper(value: $rating, in: 1...5) {
-                    Text("Rating: \(rating)")
+                Section {
+                    TextField("Name of book:", text: $title)
+                    TextField("Author's name:", text: $author)
                 }
-                Button(action: addBook) {
-                    Text(book == nil ? "Add Book" : "Update Book")
+                Section {
+                    Button("Save") {
+                        let newBook = CHBook2(context: moc)
+                        newBook.id = UUID()
+                        newBook.title = title
+                        newBook.author = author
+                        
+                        try? moc.save()
+                        dismiss()
+                    }
                 }
             }
-            .navigationBarTitle(book == nil ? "Add Book" : "Update Book")
-        }
-    }
-
-    func addBook() {
-        let bookToUpdateOrCreate = book ?? CHBook(context: managedObjectContext)
-        bookToUpdateOrCreate.title = title
-        bookToUpdateOrCreate.rating = Int16(rating)
-
-        do {
-            try managedObjectContext.save()
-        } catch {
-            // handle the Core Data error
-        }
+        }.navigationTitle("Add Book")
+        
     }
 }

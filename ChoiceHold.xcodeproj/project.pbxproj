@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		462A3AE22A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */; };
-		462A3AF12A2B0B5600817552 /* CHBook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A3AEF2A2B0B5600817552 /* CHBook+CoreDataClass.swift */; };
-		462A3AF22A2B0B5600817552 /* CHBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A3AF02A2B0B5600817552 /* CHBook+CoreDataProperties.swift */; };
-		464BBC1E2A2AAC3C007C5DAA /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BBC1D2A2AAC3C007C5DAA /* Book.swift */; };
 		464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */; };
 		465FBFC22A2AA9EE007BE558 /* ChoiceHoldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */; };
 		465FBFC42A2AA9EE007BE558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FBFC32A2AA9EE007BE558 /* ContentView.swift */; };
@@ -20,9 +17,6 @@
 
 /* Begin PBXFileReference section */
 		462A3AE12A2B072A00817552 /* ChoiceHoldDM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChoiceHoldDM.xcdatamodel; sourceTree = "<group>"; };
-		462A3AEF2A2B0B5600817552 /* CHBook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook+CoreDataClass.swift"; sourceTree = "<group>"; };
-		462A3AF02A2B0B5600817552 /* CHBook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		464BBC1D2A2AAC3C007C5DAA /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		465FBFBE2A2AA9EE007BE558 /* ChoiceHold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoiceHold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceHoldApp.swift; sourceTree = "<group>"; };
@@ -46,8 +40,6 @@
 		465FBFB52A2AA9EE007BE558 = {
 			isa = PBXGroup;
 			children = (
-				462A3AEF2A2B0B5600817552 /* CHBook+CoreDataClass.swift */,
-				462A3AF02A2B0B5600817552 /* CHBook+CoreDataProperties.swift */,
 				465FBFC02A2AA9EE007BE558 /* ChoiceHold */,
 				465FBFBF2A2AA9EE007BE558 /* Products */,
 			);
@@ -68,7 +60,6 @@
 				465FBFC32A2AA9EE007BE558 /* ContentView.swift */,
 				462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */,
 				464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */,
-				464BBC1D2A2AAC3C007C5DAA /* Book.swift */,
 				465FBFC52A2AA9EF007BE558 /* Assets.xcassets */,
 				465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */,
 				465FBFC82A2AA9EF007BE558 /* Preview Content */,
@@ -154,13 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				462A3AF22A2B0B5600817552 /* CHBook+CoreDataProperties.swift in Sources */,
 				465FBFC42A2AA9EE007BE558 /* ContentView.swift in Sources */,
 				462A3AE22A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld in Sources */,
 				465FBFC22A2AA9EE007BE558 /* ChoiceHoldApp.swift in Sources */,
-				464BBC1E2A2AAC3C007C5DAA /* Book.swift in Sources */,
 				464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */,
-				462A3AF12A2B0B5600817552 /* CHBook+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
