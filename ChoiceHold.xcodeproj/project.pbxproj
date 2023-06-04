@@ -13,6 +13,8 @@
 		465FBFC42A2AA9EE007BE558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FBFC32A2AA9EE007BE558 /* ContentView.swift */; };
 		465FBFC62A2AA9EF007BE558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465FBFC52A2AA9EF007BE558 /* Assets.xcassets */; };
 		465FBFCA2A2AA9EF007BE558 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465FBFC92A2AA9EF007BE558 /* Preview Assets.xcassets */; };
+		46F967332A2C1FF300461784 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967322A2C1FF300461784 /* BookDetailView.swift */; };
+		46F967352A2C20D500461784 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967342A2C20D500461784 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		465FBFC52A2AA9EF007BE558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoiceHold.entitlements; sourceTree = "<group>"; };
 		465FBFC92A2AA9EF007BE558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46F967322A2C1FF300461784 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		46F967342A2C20D500461784 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		465FBFC02A2AA9EE007BE558 /* ChoiceHold */ = {
 			isa = PBXGroup;
 			children = (
+				462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */,
 				465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */,
 				465FBFC32A2AA9EE007BE558 /* ContentView.swift */,
-				462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */,
+				46F967342A2C20D500461784 /* ReviewView.swift */,
+				46F967322A2C1FF300461784 /* BookDetailView.swift */,
 				464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */,
 				465FBFC52A2AA9EF007BE558 /* Assets.xcassets */,
 				465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */,
@@ -147,7 +153,9 @@
 			files = (
 				465FBFC42A2AA9EE007BE558 /* ContentView.swift in Sources */,
 				462A3AE22A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld in Sources */,
+				46F967332A2C1FF300461784 /* BookDetailView.swift in Sources */,
 				465FBFC22A2AA9EE007BE558 /* ChoiceHoldApp.swift in Sources */,
+				46F967352A2C20D500461784 /* ReviewView.swift in Sources */,
 				464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

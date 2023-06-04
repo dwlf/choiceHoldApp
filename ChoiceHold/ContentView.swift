@@ -18,8 +18,10 @@ struct ContentView: View {
                 Text("Count: \(books.count)")
                 
                 List {
-                    ForEach(books.filter({ searchText.isEmpty ? true : $0.title?.contains(searchText) ?? false }), id: \.self) { book in
-                        BookView(book: book)
+                    ForEach(filteredBooks(), id: \.self) { book in
+                        NavigationLink(destination: BookDetailView(book: book)) {
+                            BookView(book: book)
+                        }
                     }
                     .onDelete(perform: deleteBooks)
                 }
@@ -38,6 +40,21 @@ struct ContentView: View {
                 AddBookView()
             }
             .onAppear(perform: populateData)
+        }
+    }
+    
+    func filteredBooks() -> [CHBook2] {
+        if searchText.isEmpty {
+            return Array(books)
+        } else {
+            return books.filter { book in
+                let bookTitleContainsSearchText = book.title?.lowercased().contains(searchText.lowercased()) ?? false
+                let bookReviewsContainSearchText = book.reviews?.contains(where: { review in
+                    let review = review as? CHReview
+                    return review?.topic?.lowercased().contains(searchText.lowercased()) ?? false
+                }) ?? false
+                return bookTitleContainsSearchText || bookReviewsContainSearchText
+            }
         }
     }
     
@@ -148,38 +165,4 @@ struct BookView: View {
     }
 }
 
-struct ReviewView: View {
-    let review: CHReview
-    @Environment(\.managedObjectContext) var moc // Access the moc from the environment
 
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Review UUID: \(review.id?.uuidString ?? "Unknown UUID")")
-                Text("Review Topic: \(review.topic ?? "Unknown Topic")")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            Spacer()
-            Button(action: {
-                deleteReview()
-            }) {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-            }
-        }
-    }
-
-    func deleteReview() {
-        moc.delete(review)
-        saveContext()
-    }
-
-    func saveContext() {
-        do {
-            try moc.save()
-        } catch {
-            print("Error saving context: \(error)")
-        }
-    }
-}
