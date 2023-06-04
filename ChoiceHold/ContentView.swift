@@ -7,18 +7,21 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
     
     @State private var showingAddScreen = false
+    @State private var searchText = ""
     
     var body: some View {
         NavigationView {
             VStack {
+                TextField("Search...", text: $searchText)
+                    .padding(.horizontal)
+                
                 Text("Count: \(books.count)")
                 
                 List {
-                    ForEach(books, id: \.self) { book in
+                    ForEach(books.filter({ searchText.isEmpty ? true : $0.title?.contains(searchText) ?? false }), id: \.self) { book in
                         BookView(book: book)
-                            .environment(\.managedObjectContext, moc) // Pass the moc to subviews
                     }
-                    .onDelete(perform: deleteBooks) // Enable swipe-to-delete for books
+                    .onDelete(perform: deleteBooks)
                 }
             }
             .navigationTitle("ChoiceHold")
