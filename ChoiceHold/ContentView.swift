@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
     
+    @State private var showingSettingsScreen = false
     @State private var showingAddScreen = false
     @State private var searchText = ""
     
@@ -29,15 +30,28 @@ struct ContentView: View {
             .navigationTitle("ChoiceHold")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingAddScreen.toggle()
-                    } label: {
-                        Label("Add Book", systemImage: "plus")
+                    HStack {
+                        Button {
+                            showingAddScreen.toggle()
+                        } label: {
+                            Label("Add Book", systemImage: "plus")
+                        }
+                        
+                        Button {
+                            showingSettingsScreen.toggle()
+                        } label: {
+                            Image(systemName: "gearshape")
+                        }
                     }
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
                 AddBookView()
+            }
+            .sheet(isPresented: $showingSettingsScreen) {
+                NavigationView {
+                    SettingsView()
+                }
             }
             .onAppear(perform: populateData)
         }
