@@ -7,6 +7,7 @@ struct ContentView: View {
     
     @State private var showingSettingsScreen = false
     @State private var showingAddScreen = false
+    @State private var showingBookSearchScreen = false // new
     @State private var searchText = ""
     
     var body: some View {
@@ -41,6 +42,13 @@ struct ContentView: View {
                         } label: {
                             Image(systemName: "gearshape")
                         }
+
+                        // New Book Search button
+                        Button {
+                            showingBookSearchScreen.toggle()
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                        }
                     }
                 }
             }
@@ -50,6 +58,11 @@ struct ContentView: View {
             .sheet(isPresented: $showingSettingsScreen) {
                 NavigationView {
                     SettingsView()
+                }
+            }
+            .sheet(isPresented: $showingBookSearchScreen) {
+                NavigationView {
+                    OpenLibraryBookSearchView()
                 }
             }
             .onAppear(perform: populateData)

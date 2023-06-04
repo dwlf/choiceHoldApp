@@ -19,6 +19,8 @@
 		46D4ECE02A2C409400A6244C /* CHBook2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */; };
 		46D4ECE12A2C409400A6244C /* CHBook2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */; };
 		46D4ECE82A2C487D00A6244C /* OpenLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */; };
+		46D4ECEA2A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */; };
+		46D4ECEC2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */; };
 		46F967332A2C1FF300461784 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967322A2C1FF300461784 /* BookDetailView.swift */; };
 		46F967352A2C20D500461784 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967342A2C20D500461784 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataClass.swift"; sourceTree = "<group>"; };
 		46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryAPI.swift; sourceTree = "<group>"; };
+		46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryBookSearchViewModel.swift; sourceTree = "<group>"; };
+		46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryBookSearchView.swift; sourceTree = "<group>"; };
 		46F967322A2C1FF300461784 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		46F967342A2C20D500461784 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +80,8 @@
 				465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */,
 				465FBFC32A2AA9EE007BE558 /* ContentView.swift */,
 				46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */,
+				46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */,
+				46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */,
 				46D4ECC72A2C3DBC00A6244C /* SettingsView.swift */,
 				46F967342A2C20D500461784 /* ReviewView.swift */,
 				46F967322A2C1FF300461784 /* BookDetailView.swift */,
@@ -188,7 +194,9 @@
 				46D4ECE82A2C487D00A6244C /* OpenLibraryAPI.swift in Sources */,
 				46F967352A2C20D500461784 /* ReviewView.swift in Sources */,
 				46D4ECE12A2C409400A6244C /* CHBook2+CoreDataProperties.swift in Sources */,
+				46D4ECEA2A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift in Sources */,
 				464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */,
+				46D4ECEC2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
