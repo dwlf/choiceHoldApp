@@ -1,7 +1,6 @@
 import SwiftUI
 import CoreData
 
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
@@ -90,7 +89,7 @@ struct ContentView: View {
     }
     
     func createDummyBooks() {
-        let bookTitles = ["Title 1", "Title 2", "Title 3", "Title 4"]
+        let bookTitles = ["Harry Potter and the Chamber of Secrets"]
         
         for (index, title) in bookTitles.enumerated() {
             let fetchRequest: NSFetchRequest<CHBook2> = CHBook2.fetchRequest()
@@ -102,16 +101,69 @@ struct ContentView: View {
             
             let book = CHBook2(context: moc)
             book.id = UUID()
-            book.author = "Author \(index + 1)"
-            book.isbn = "ISBN \(index + 1)"
-            book.language = "Language \(index + 1)"
-            book.publicationYear = Int16(2001 + index)
             book.title = title
+            
+            // Fetch book details from Open Library API
+            OpenLibraryAPI.searchBooks(query: title) { result in
+                switch result {
+                case .success(let books):
+                    if let firstBook = books.first {
+                        if let authorKey = firstBook.authorKey?.first {
+                            fetchAuthorDetails(authorKey: authorKey) { author in
+                                book.author = author
+                                saveContext()
+                            }
+                        } else {
+                            book.author = "Unknown Author"
+                            saveContext()
+                        }
+                    } else {
+                        book.author = "Unknown Author"
+                        saveContext()
+                    }
+                    
+                case .failure(let error):
+                    print("Failed to fetch book details: \(error)")
+                }
+            }
             
             createDummyReviews(for: book)
         }
+    }
+
+    func fetchAuthorDetails(authorKey: String, completion: @escaping (String) -> Void) {
+        let authorURLString = "https://openlibrary.org/authors/\(authorKey).json"
         
-        saveContext()
+        guard let authorURL = URL(string: authorURLString) else {
+            completion("Unknown Author")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: authorURL) { data, response, error in
+            if let error = error {
+                print("Failed to fetch author details: \(error)")
+                completion("Unknown Author")
+                return
+            }
+            
+            guard let data = data else {
+                completion("Unknown Author")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let authorResponse = try decoder.decode(OpenLibraryAuthorResponse.self, from: data)
+                completion(authorResponse.name)
+            } catch {
+                print("Failed to decode author details: \(error)")
+                completion("Unknown Author")
+            }
+        }.resume()
+    }
+
+    struct OpenLibraryAuthorResponse: Codable {
+        let name: String
     }
     
     func createDummyReviews(for book: CHBook2) {
