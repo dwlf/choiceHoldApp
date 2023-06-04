@@ -70,10 +70,6 @@
 		465FBFC02A2AA9EE007BE558 /* ChoiceHold */ = {
 			isa = PBXGroup;
 			children = (
-				46D4ECDA2A2C409400A6244C /* CHReview+CoreDataClass.swift */,
-				46D4ECDB2A2C409400A6244C /* CHReview+CoreDataProperties.swift */,
-				46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */,
-				46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */,
 				462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */,
 				465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */,
 				465FBFC32A2AA9EE007BE558 /* ContentView.swift */,
@@ -81,6 +77,7 @@
 				46F967342A2C20D500461784 /* ReviewView.swift */,
 				46F967322A2C1FF300461784 /* BookDetailView.swift */,
 				464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */,
+				46D4ECE62A2C467F00A6244C /* Models */,
 				465FBFC52A2AA9EF007BE558 /* Assets.xcassets */,
 				465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */,
 				465FBFC82A2AA9EF007BE558 /* Preview Content */,
@@ -94,6 +91,17 @@
 				465FBFC92A2AA9EF007BE558 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		46D4ECE62A2C467F00A6244C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46D4ECDA2A2C409400A6244C /* CHReview+CoreDataClass.swift */,
+				46D4ECDB2A2C409400A6244C /* CHReview+CoreDataProperties.swift */,
+				46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */,
+				46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
