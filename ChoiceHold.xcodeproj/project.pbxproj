@@ -18,9 +18,9 @@
 		46D4ECDF2A2C409400A6244C /* CHReview+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECDB2A2C409400A6244C /* CHReview+CoreDataProperties.swift */; };
 		46D4ECE02A2C409400A6244C /* CHBook2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */; };
 		46D4ECE12A2C409400A6244C /* CHBook2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */; };
-		46D4ECE82A2C487D00A6244C /* OpenLibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */; };
 		46D4ECEA2A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */; };
 		46D4ECEC2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */; };
+		46D8E4102A2F13EA00284D10 /* OpenLibrarySwiftSearchClient in Frameworks */ = {isa = PBXBuildFile; productRef = 46D8E40F2A2F13EA00284D10 /* OpenLibrarySwiftSearchClient */; };
 		46F967332A2C1FF300461784 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967322A2C1FF300461784 /* BookDetailView.swift */; };
 		46F967352A2C20D500461784 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F967342A2C20D500461784 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
@@ -34,12 +34,12 @@
 		465FBFC52A2AA9EF007BE558 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoiceHold.entitlements; sourceTree = "<group>"; };
 		465FBFC92A2AA9EF007BE558 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46A0D3D02A2F108A00A86B6D /* OpenLibrarySwiftSearchClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OpenLibrarySwiftSearchClient; path = ../OpenLibrarySwiftSearchClient; sourceTree = "<group>"; };
 		46D4ECC72A2C3DBC00A6244C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		46D4ECDA2A2C409400A6244C /* CHReview+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHReview+CoreDataClass.swift"; sourceTree = "<group>"; };
 		46D4ECDB2A2C409400A6244C /* CHReview+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHReview+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		46D4ECDC2A2C409400A6244C /* CHBook2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataClass.swift"; sourceTree = "<group>"; };
 		46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryAPI.swift; sourceTree = "<group>"; };
 		46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryBookSearchViewModel.swift; sourceTree = "<group>"; };
 		46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryBookSearchView.swift; sourceTree = "<group>"; };
 		46F967322A2C1FF300461784 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
@@ -51,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D8E4102A2F13EA00284D10 /* OpenLibrarySwiftSearchClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +61,10 @@
 		465FBFB52A2AA9EE007BE558 = {
 			isa = PBXGroup;
 			children = (
+				46A0D3CF2A2F108A00A86B6D /* Packages */,
 				465FBFC02A2AA9EE007BE558 /* ChoiceHold */,
 				465FBFBF2A2AA9EE007BE558 /* Products */,
+				46D8E40E2A2F13EA00284D10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,7 +82,6 @@
 				462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */,
 				465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */,
 				465FBFC32A2AA9EE007BE558 /* ContentView.swift */,
-				46D4ECE72A2C487D00A6244C /* OpenLibraryAPI.swift */,
 				46D4ECE92A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift */,
 				46D4ECEB2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift */,
 				46D4ECC72A2C3DBC00A6244C /* SettingsView.swift */,
@@ -102,6 +104,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		46A0D3CF2A2F108A00A86B6D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				46A0D3D02A2F108A00A86B6D /* OpenLibrarySwiftSearchClient */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		46D4ECE62A2C467F00A6244C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,13 @@
 				46D4ECDD2A2C409400A6244C /* CHBook2+CoreDataProperties.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		46D8E40E2A2F13EA00284D10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +146,9 @@
 			dependencies = (
 			);
 			name = ChoiceHold;
+			packageProductDependencies = (
+				46D8E40F2A2F13EA00284D10 /* OpenLibrarySwiftSearchClient */,
+			);
 			productName = ChoiceHold;
 			productReference = 465FBFBE2A2AA9EE007BE558 /* ChoiceHold.app */;
 			productType = "com.apple.product-type.application";
@@ -191,7 +211,6 @@
 				462A3AE22A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld in Sources */,
 				46F967332A2C1FF300461784 /* BookDetailView.swift in Sources */,
 				465FBFC22A2AA9EE007BE558 /* ChoiceHoldApp.swift in Sources */,
-				46D4ECE82A2C487D00A6244C /* OpenLibraryAPI.swift in Sources */,
 				46F967352A2C20D500461784 /* ReviewView.swift in Sources */,
 				46D4ECE12A2C409400A6244C /* CHBook2+CoreDataProperties.swift in Sources */,
 				46D4ECEA2A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift in Sources */,
@@ -408,6 +427,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		46D8E40F2A2F13EA00284D10 /* OpenLibrarySwiftSearchClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OpenLibrarySwiftSearchClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */ = {

@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import OpenLibrarySwiftSearchClient
 
 class OpenLibraryBookSearchViewModel: ObservableObject {
     @Published var query: String = ""
@@ -17,11 +18,11 @@ class OpenLibraryBookSearchViewModel: ObservableObject {
             
             if self.query.count >= 3 {
                 // Perform the search
-                OpenLibraryAPI.searchBooks(query: self.query) { result in
+                OpenLibrarySwiftSearchClient.findClosestBook(title: self.query, author: nil) { result in
                     DispatchQueue.main.async {
                         switch result {
-                        case .success(let books):
-                            self.searchResults = books
+                        case .success(let book):
+                            self.searchResults.append(book)
                         case .failure(let error):
                             print("Search failed: \(error)")
                             self.searchResults = []

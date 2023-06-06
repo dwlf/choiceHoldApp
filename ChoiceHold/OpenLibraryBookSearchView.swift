@@ -1,4 +1,5 @@
 import SwiftUI
+import OpenLibrarySwiftSearchClient
 
 struct OpenLibraryBookSearchView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -17,7 +18,7 @@ struct OpenLibraryBookSearchView: View {
                 VStack(alignment: .leading) {
                     Text(book.title)
                         .font(.headline)
-                    Text("Author: \(book.author ?? "Unknown")")
+                    Text("Author: \(book.author_name?.first ?? "Unknown")")
                     if let urlString = book.url, let url = URL(string: urlString) {
                         Link("OpenLibrary Link", destination: url)
                     } else {

@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import OpenLibrarySwiftSearchClient
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
@@ -117,24 +118,20 @@ struct ContentView: View {
             book.title = title
             
             // Fetch book details from Open Library API
-            OpenLibraryAPI.searchBooks(query: title) { result in
+            OpenLibrarySwiftSearchClient.findClosestBook(title: title, author: nil) { result in
                 switch result {
-                case .success(let books):
-                    if let firstBook = books.first {
-                        if let authorKey = firstBook.authorKey?.first {
-                            fetchAuthorDetails(authorKey: authorKey) { author in
-                                book.author = author
-                                saveContext()
-                            }
-                        } else {
-                            book.author = "Unknown Author"
+                case .success(let openLibraryBook):
+                    if let authorName = openLibraryBook.author_name?.first {
+                        fetchAuthorDetails(authorKey: authorName) { author in
+                            let chBook = CHBook2() // Replace CHBook2 with your CHBook2 struct or class
+                            chBook.author = author // Assign the author to CHBook2's author property
                             saveContext()
                         }
                     } else {
-                        book.author = "Unknown Author"
+                        let chBook = CHBook2() // Replace CHBook2 with your CHBook2 struct or class
+                        chBook.author = "Unknown Author" // Assign a default author value
                         saveContext()
                     }
-                    
                 case .failure(let error):
                     print("Failed to fetch book details: \(error)")
                 }
