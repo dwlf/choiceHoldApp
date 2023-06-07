@@ -5,20 +5,33 @@ import OpenLibrarySwiftSearchClient
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
-    
+
     @State private var showingSettingsScreen = false
     @State private var showingAddScreen = false
     @State private var showingBookSearchScreen = false // new
     @State private var searchText = ""
-    
+    @State private var lastTypingTime: Date = Date()
+    @State private var showingAddBookPrompt = false
+
     var body: some View {
         NavigationView {
             VStack {
                 TextField("Search...", text: $searchText)
                     .padding(.horizontal)
-                
+                    .onChange(of: searchText) { value in
+                        lastTypingTime = Date() // store the time when the user typed something
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // wait for 0.5 seconds
+                            // if after 0.5 seconds the last typing time hasn't been updated, the user has stopped typing
+                            if Date().timeIntervalSince(lastTypingTime) >= 0.5 && searchText.count >= 3 {
+                                showingAddBookPrompt = true
+                            } else {
+                                showingAddBookPrompt = false
+                            }
+                        }
+                    }
+
                 Text("Count: \(books.count)")
-                
+
                 List {
                     ForEach(filteredBooks(), id: \.self) { book in
                         NavigationLink(destination: BookDetailView(book: book)) {
@@ -27,6 +40,18 @@ struct ContentView: View {
                     }
                     .onDelete(perform: deleteBooks)
                 }
+
+                Button(action: {
+                    showingAddScreen.toggle()
+                }, label: {
+                    Text("Cannot find the book you were looking for?")
+                })
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .opacity(showingAddBookPrompt ? 1 : 0)
             }
             .navigationTitle("ChoiceHold")
             .toolbar {
@@ -37,7 +62,7 @@ struct ContentView: View {
                         } label: {
                             Label("Add Book", systemImage: "plus")
                         }
-                        
+
                         Button {
                             showingSettingsScreen.toggle()
                         } label: {
