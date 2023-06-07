@@ -82,7 +82,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingAddScreen) {
-                AddBookView()
+                AddBookView(searchText: searchText)
             }
             .sheet(isPresented: $showingSettingsScreen) {
                 NavigationView {
