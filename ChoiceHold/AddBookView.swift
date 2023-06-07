@@ -70,6 +70,21 @@ struct AddBookView: View {
                         }
                     }
                 }
+                Spacer()
+                
+                HStack(spacing: 4) {
+                    Image("openLibraryLogo")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                    Text("Powered, but not affiliated with")
+                        .font(.footnote)
+                    Link("Open Library", destination: URL(string: "https://openlibrary.org/")!)
+                        .font(.footnote)
+                        .foregroundColor(.blue)
+                        .underline()
+                }
+                .padding(.bottom)
+
             }
             .navigationTitle("Add Book")
             .toolbar {
