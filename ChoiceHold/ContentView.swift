@@ -17,8 +17,11 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 TextField("Search...", text: $searchText)
-                    .padding(.horizontal)
-                    .onChange(of: searchText) { value in
+                                    .padding()
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(8)
+                                    .padding(.horizontal)
+                                    .onChange(of: searchText) { value in
                         lastTypingTime = Date() // store the time when the user typed something
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // wait for 0.5 seconds
                             // if after 0.5 seconds the last typing time hasn't been updated, the user has stopped typing
