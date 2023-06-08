@@ -29,6 +29,10 @@ extension CHBook2 {
 // MARK: Generated accessors for reviews
 extension CHBook2 {
 
+    static func isDuplicateISBNExists(_ isbn: String, in collection: [CHBook2]) -> Bool {
+        return collection.contains { $0.isbn == isbn }
+    }
+    
     @objc(addReviewsObject:)
     @NSManaged public func addToReviews(_ value: CHReview)
 

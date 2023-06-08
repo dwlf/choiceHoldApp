@@ -16,6 +16,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image("ChoiceHoldLogo")
+                                   .resizable()
+                                   .aspectRatio(contentMode: .fit)
+                                   .frame(width: 50, height: 50)
+                                   .padding(.top, 20)
                 TextField("Search...", text: $searchText)
                                     .padding()
                                     .background(Color(.systemGray6))
@@ -56,7 +61,8 @@ struct ContentView: View {
                 .cornerRadius(10)
                 .opacity(showingAddBookPrompt ? 1 : 0)
             }
-            .navigationTitle("ChoiceHold")
+            .navigationTitle("")
+            .navigationBarHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
