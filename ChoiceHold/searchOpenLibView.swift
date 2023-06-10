@@ -2,7 +2,7 @@ import SwiftUI
 import CoreData
 import OpenLibrarySwiftSearchClient
 
-struct AddBookView: View {
+struct searchOpenLibView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
 

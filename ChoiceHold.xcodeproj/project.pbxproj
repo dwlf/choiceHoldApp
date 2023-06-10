@@ -13,7 +13,7 @@
 		4619EA992A34202E0009B94D /* CHBook2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619EA952A34202E0009B94D /* CHBook2+CoreDataClass.swift */; };
 		4619EA9A2A34202E0009B94D /* CHBook2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4619EA962A34202E0009B94D /* CHBook2+CoreDataProperties.swift */; };
 		462A3AE22A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462A3AE02A2B072A00817552 /* ChoiceHoldDM.xcdatamodeld */; };
-		464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */; };
+		464BBC202A2AAD50007C5DAA /* searchOpenLibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464BBC1F2A2AAD50007C5DAA /* searchOpenLibView.swift */; };
 		465FBFC22A2AA9EE007BE558 /* ChoiceHoldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */; };
 		465FBFC42A2AA9EE007BE558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FBFC32A2AA9EE007BE558 /* ContentView.swift */; };
 		465FBFC62A2AA9EF007BE558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465FBFC52A2AA9EF007BE558 /* Assets.xcassets */; };
@@ -35,7 +35,7 @@
 		4619EA952A34202E0009B94D /* CHBook2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4619EA962A34202E0009B94D /* CHBook2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CHBook2+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		462A3AE12A2B072A00817552 /* ChoiceHoldDM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChoiceHoldDM.xcdatamodel; sourceTree = "<group>"; };
-		464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		464BBC1F2A2AAD50007C5DAA /* searchOpenLibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchOpenLibView.swift; sourceTree = "<group>"; };
 		465FBFBE2A2AA9EE007BE558 /* ChoiceHold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoiceHold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		465FBFC12A2AA9EE007BE558 /* ChoiceHoldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceHoldApp.swift; sourceTree = "<group>"; };
 		465FBFC32A2AA9EE007BE558 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 				46D4ECC72A2C3DBC00A6244C /* SettingsView.swift */,
 				46F967342A2C20D500461784 /* ReviewView.swift */,
 				46F967322A2C1FF300461784 /* BookDetailView.swift */,
-				464BBC1F2A2AAD50007C5DAA /* AddBookView.swift */,
+				464BBC1F2A2AAD50007C5DAA /* searchOpenLibView.swift */,
 				46D4ECE62A2C467F00A6244C /* Models */,
 				465FBFC52A2AA9EF007BE558 /* Assets.xcassets */,
 				465FBFC72A2AA9EF007BE558 /* ChoiceHold.entitlements */,
@@ -220,7 +220,7 @@
 				46F967352A2C20D500461784 /* ReviewView.swift in Sources */,
 				4619EA9A2A34202E0009B94D /* CHBook2+CoreDataProperties.swift in Sources */,
 				46D4ECEA2A2CDC4600A6244C /* OpenLibraryBookSearchViewModel.swift in Sources */,
-				464BBC202A2AAD50007C5DAA /* AddBookView.swift in Sources */,
+				464BBC202A2AAD50007C5DAA /* searchOpenLibView.swift in Sources */,
 				46D4ECEC2A2CDC8E00A6244C /* OpenLibraryBookSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

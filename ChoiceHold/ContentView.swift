@@ -7,7 +7,7 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: []) var books: FetchedResults<CHBook2>
 
     @State private var showingSettingsScreen = false
-    @State private var showingAddScreen = false
+    @State private var showingOpenLibSearchView = false
     @State private var showingBookSearchScreen = false
     @State private var searchText = ""
     @State private var lastTypingTime: Date = Date()
@@ -17,7 +17,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 HStack(alignment: .center) {
-                    TextField("Search...", text: $searchText, onCommit: populateData)
+                    TextField("Search...", text: $searchText)
                         .padding()
                         .frame(maxWidth: .infinity)
                     Spacer()
@@ -55,7 +55,7 @@ struct ContentView: View {
                 }
 
                 Button(action: {
-                    showingAddScreen.toggle()
+                    showingOpenLibSearchView.toggle()
                 }, label: {
                     Text("Not finding what you were looking for?")
                 })
@@ -71,7 +71,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
-                            showingAddScreen.toggle()
+                            showingOpenLibSearchView.toggle()
                         } label: {
                             Label("Add Book", systemImage: "plus")
                         }
@@ -91,8 +91,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingAddScreen) {
-                AddBookView(searchText: searchText)
+            .sheet(isPresented: $showingOpenLibSearchView) {
+                searchOpenLibView(searchText: searchText)
             }
             .sheet(isPresented: $showingSettingsScreen) {
                 NavigationView {
