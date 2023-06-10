@@ -8,7 +8,7 @@ struct ContentView: View {
 
     @State private var showingSettingsScreen = false
     @State private var showingAddScreen = false
-    @State private var showingBookSearchScreen = false // new
+    @State private var showingBookSearchScreen = false
     @State private var searchText = ""
     @State private var lastTypingTime: Date = Date()
     @State private var showingAddBookPrompt = false
@@ -16,17 +16,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image("ChoiceHoldLogo")
-                                   .resizable()
-                                   .aspectRatio(contentMode: .fit)
-                                   .frame(width: 50, height: 50)
-                                   .padding(.top, 20)
-                TextField("Search...", text: $searchText)
-                                    .padding()
-                                    .background(Color(.systemGray6))
-                                    .cornerRadius(8)
-                                    .padding(.horizontal)
-                                    .onChange(of: searchText) { value in
+                HStack(alignment: .center) {
+                    TextField("Search...", text: $searchText, onCommit: populateData)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                    Image("ChoiceHoldLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 50)
+                        .cornerRadius(8)
+                        .padding(.bottom, 10)
+                }.padding(.top, 20)
+                .padding(.horizontal)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .onChange(of: searchText) { value in
                         lastTypingTime = Date() // store the time when the user typed something
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // wait for 0.5 seconds
                             // if after 0.5 seconds the last typing time hasn't been updated, the user has stopped typing
