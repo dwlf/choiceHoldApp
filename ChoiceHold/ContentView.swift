@@ -52,7 +52,7 @@ struct ContentView: View {
                 Button(action: {
                     showingAddScreen.toggle()
                 }, label: {
-                    Text("Cannot find the book you were looking for?")
+                    Text("Not finding what you were looking for?")
                 })
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
@@ -62,7 +62,6 @@ struct ContentView: View {
                 .opacity(showingAddBookPrompt ? 1 : 0)
             }
             .navigationTitle("")
-            .navigationBarHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
@@ -132,7 +131,7 @@ struct ContentView: View {
                     }
                 }
             }
-            createDummyBooks()
+           // createDummyBooks()
         }
     }
     

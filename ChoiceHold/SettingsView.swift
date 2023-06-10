@@ -20,7 +20,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .navigationBarTitle("Settings")
+        .navigationBarTitle("ChoiceHold Settings")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {

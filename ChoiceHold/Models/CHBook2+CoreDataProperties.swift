@@ -2,7 +2,7 @@
 //  CHBook2+CoreDataProperties.swift
 //  ChoiceHold
 //
-//  Created by Lloyd Dewolf on 6/3/23.
+//  Created by Lloyd Dewolf on 6/9/23.
 //
 //
 
@@ -20,7 +20,7 @@ extension CHBook2 {
     @NSManaged public var id: UUID?
     @NSManaged public var isbn: String?
     @NSManaged public var language: String?
-    @NSManaged public var publicationYear: Int16
+    @NSManaged public var pubYearStr: String?
     @NSManaged public var title: String?
     @NSManaged public var reviews: NSSet?
 
@@ -29,10 +29,6 @@ extension CHBook2 {
 // MARK: Generated accessors for reviews
 extension CHBook2 {
 
-    static func isDuplicateISBNExists(_ isbn: String, in collection: [CHBook2]) -> Bool {
-        return collection.contains { $0.isbn == isbn }
-    }
-    
     @objc(addReviewsObject:)
     @NSManaged public func addToReviews(_ value: CHReview)
 

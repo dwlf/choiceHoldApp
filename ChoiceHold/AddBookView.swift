@@ -9,8 +9,7 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var isbn = ""
-    @State private var publicationYear = 1999
-    @State private var books: [OpenLibraryBook] = []
+    @State private var olBooks: [OpenLibraryBook] = []
 
     @State var searchText: String
     @State private var lastTypingTime: Date = Date()
@@ -30,8 +29,8 @@ struct AddBookView: View {
                             if Date().timeIntervalSince(lastTypingTime) >= 0.5 && searchText.count >= 3 {
                                 OpenLibrarySwiftSearchClient.searchBooksByTitleAndAuthor(value, limit: 10) { result in
                                     switch result {
-                                    case .success(let books):
-                                        self.books = books
+                                    case .success(let olBooks):
+                                        self.olBooks = olBooks
                                     case .failure(let error):
                                         print(error)
                                     }
@@ -41,23 +40,27 @@ struct AddBookView: View {
                     }
                 
                 List {
-                    ForEach(books, id: \.key) { book in
+                    ForEach(olBooks, id: \.key) { olBooks in
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(book.title)
-                                Text(book.author_name?.first ?? "")
+                                Text(olBooks.title)
+                                Text(olBooks.author_name?.first ?? "")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
                             Spacer()
                             Button(action: {
-                                let newBook = CHBook2(context: moc)
-                                newBook.id = UUID()
-                                newBook.title = book.title
-                                newBook.author = book.author_name?.first
-                                newBook.isbn = book.isbn?.first
+                                let bookToAdd = CHBook2(context: moc)
+                                bookToAdd.id = UUID()
+                                bookToAdd.title = olBooks.title
+                                bookToAdd.author = olBooks.author_name?.first
+                                bookToAdd.isbn = olBooks.isbn?.first
 
-                                newBook.publicationYear = Int16(book.first_publish_year)
+                                /// TOFIX
+                                if let firstPublishYear = olBooks.first_publish_year {
+                                    let publicationYearString = String(firstPublishYear)
+                                    bookToAdd.pubYearStr = publicationYearString
+                                }
                                 
                                 do {
                                     try moc.save()
@@ -100,8 +103,8 @@ struct AddBookView: View {
                 if searchText.count >= 3 {
                     OpenLibrarySwiftSearchClient.searchBooksByTitleAndAuthor(searchText, limit: 10) { result in
                         switch result {
-                        case .success(let books):
-                            self.books = books
+                        case .success(let olBooks):
+                            self.olBooks = olBooks
                         case .failure(let error):
                             print(error)
                         }
