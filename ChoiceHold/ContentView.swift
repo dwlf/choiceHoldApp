@@ -20,6 +20,7 @@ struct ContentView: View {
                     TextField("Search...", text: $searchText)
                         .padding()
                         .frame(maxWidth: .infinity)
+                        .font(.system(size: 22))
                     Spacer()
                     Image("ChoiceHoldLogo")
                         .resizable()

@@ -14,8 +14,8 @@
             filePath = "ChoiceHold/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "createDummyBooks()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "ChoiceHold/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "createDummyBooks()"
             landmarkType = "7">
             <Locations>
@@ -63,6 +63,36 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "161"
                   endingLineNumber = "161"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "E45C0D58-0871-4EF1-A2F0-7300E8220856 - 833f20e33007669c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChoiceHold.ContentView.createDummyBooks() -&gt; ()"
+                  moduleName = "ChoiceHold"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lll/f/ChoiceHold/ChoiceHold/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1720">
+               </Location>
+               <Location
+                  uuid = "E45C0D58-0871-4EF1-A2F0-7300E8220856 - 12e34a03d2397ba7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;OpenLibrarySwiftSearchClient.OpenLibraryBook, OpenLibrarySwiftSearchClient.OpenLibraryAPIError&gt;) -&gt; () in ChoiceHold.ContentView.createDummyBooks() -&gt; ()"
+                  moduleName = "ChoiceHold"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lll/f/ChoiceHold/ChoiceHold/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
                   offsetFromSymbolStart = "156">
                </Location>
             </Locations>
