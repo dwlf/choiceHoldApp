@@ -89,7 +89,7 @@ struct searchOpenLibView: View {
                 .padding(.bottom)
 
             }
-            .navigationTitle("Add Book")
+            .navigationTitle("Search Open Library")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
