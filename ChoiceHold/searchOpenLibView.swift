@@ -22,12 +22,13 @@ struct searchOpenLibView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(8.0)
                     .padding(.horizontal)
-                    .onChange(of: searchText) { value in
+                    .onChange(of: searchText) { searchTextValue in
                         lastTypingTime = Date() // store the time when the user typed something
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // wait for 0.5 seconds
+                            let trimmedSearchText = searchTextValue.trimmingCharacters(in: .whitespaces)
                             // if after 0.5 seconds the last typing time hasn't been updated, the user has stopped typing
-                            if Date().timeIntervalSince(lastTypingTime) >= 0.5 && searchText.count >= 3 {
-                                OpenLibrarySwiftSearchClient.searchBooksByTitleAndAuthor(value, limit: 10) { result in
+                            if Date().timeIntervalSince(lastTypingTime) >= 0.5 && trimmedSearchText.count >= 3 {
+                                OpenLibrarySwiftSearchClient.searchBooksByTitleAndAuthor(searchTextValue, limit: 10) { result in
                                     switch result {
                                     case .success(let olBooks):
                                         self.olBooks = olBooks

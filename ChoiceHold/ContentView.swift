@@ -18,20 +18,19 @@ struct ContentView: View {
             VStack {
                 HStack(alignment: .center) {
                     TextField("Search...", text: $searchText)
-                        .padding()
                         .frame(maxWidth: .infinity)
-                        .font(.system(size: 22))
-                    Spacer()
-                    Image("ChoiceHoldLogo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 50)
-                        .cornerRadius(8)
+                        .font(.system(size: 18))
                         .padding(.bottom, 10)
-                }.padding(.top, 20)
+                    Spacer()
+                    Image("choiceKeepLogo33x35")
+                        .cornerRadius(5)
+                        .padding(.bottom, 10)
+                }.padding(.top, 10)
                 .padding(.horizontal)
                 .background(Color(.systemGray6))
-                .cornerRadius(8)
+                .cornerRadius(10)
+                .padding(.leading, 15)
+                .padding(.trailing, 15)
                 .onChange(of: searchText) { value in
                         lastTypingTime = Date() // store the time when the user typed something
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // wait for 0.5 seconds
@@ -93,7 +92,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $showingOpenLibSearchView) {
-                searchOpenLibView(searchText: searchText)
+                searchOpenLibView(searchText: searchText.trimmingCharacters(in: .whitespaces))
             }
             .sheet(isPresented: $showingSettingsScreen) {
                 NavigationView {
